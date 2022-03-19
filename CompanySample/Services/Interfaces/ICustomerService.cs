@@ -1,5 +1,4 @@
 ﻿using CompanySample.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace CompanySample.Services.Interfaces
 {

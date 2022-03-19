@@ -1,5 +1,4 @@
 ﻿#nullable disable
-using CompanySample.Data;
 using CompanySample.Models;
 using CompanySample.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
