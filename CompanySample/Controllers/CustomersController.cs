@@ -12,11 +12,13 @@ namespace CompanySample.Controllers
     {
         private readonly ICustomerService _service;
         private ILogger<CustomersController> _logger;
+        private readonly IValidationService _validationService;
 
-        public CustomersController(ICustomerService service, ILogger<CustomersController> logger)
+        public CustomersController(ICustomerService service, ILogger<CustomersController> logger, IValidationService validationService)
         {
             _service = service;
             _logger = logger;
+            _validationService =  validationService;
         }
 
         // GET: api/Customers
@@ -51,7 +53,14 @@ namespace CompanySample.Controllers
 
             try
             {
-                await _service.PutCustomer(id, customer);
+                if (_validationService.IsValidEmail(customer.Email))
+                {
+                    await _service.PutCustomer(id, customer);
+                }
+                else _logger.LogInformation("Invalid email");
+
+                return BadRequest("Invalid email");
+                    
             }
             catch (DbUpdateConcurrencyException ex)
             {
