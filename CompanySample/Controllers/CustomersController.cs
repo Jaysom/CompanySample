@@ -11,10 +11,12 @@ namespace CompanySample.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService _service;
+        private ILogger<CustomersController> _logger;
 
-        public CustomersController(ICustomerService service)
+        public CustomersController(ICustomerService service, ILogger<CustomersController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         // GET: api/Customers
@@ -47,7 +49,6 @@ namespace CompanySample.Controllers
                 return BadRequest();
             }
 
-
             try
             {
                 await _service.PutCustomer(id, customer);
@@ -60,7 +61,9 @@ namespace CompanySample.Controllers
                 }
                 else
                 {
-                    throw ex;
+                    _logger.LogError(ex.Message);
+
+                    throw ;
                 }
             }
 

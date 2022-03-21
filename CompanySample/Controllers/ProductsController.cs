@@ -11,10 +11,12 @@ namespace CompanySample.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _service;
+        private ILogger<ProductsController> _logger;
 
-        public ProductsController(IProductService service)
+        public ProductsController(IProductService service, ILogger<ProductsController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         // GET: api/Products
@@ -72,7 +74,9 @@ namespace CompanySample.Controllers
                 }
                 else
                 {
-                    throw ex;
+                    _logger.LogError(ex.Message);
+
+                    throw ;
                 }
             }
 

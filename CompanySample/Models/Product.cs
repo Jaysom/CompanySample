@@ -11,8 +11,6 @@ namespace CompanySample.Models
         public string Name { get; set; }
         [StringLength(50)]
         public string ProductTypeName { get; set; }
-        public int TerminalNumber { get; set; }
-        public DateTime SoldAt { get; set; }
         public virtual IList<Customer> ProductCustomers { get; set; }
     }
 }

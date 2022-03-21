@@ -3,7 +3,7 @@
     public enum DocType
     {
         NIF,
-        Passport,
-        NIE
+        NIE,
+        Passport
     }
 }

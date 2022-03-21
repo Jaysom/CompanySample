@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -34,9 +33,7 @@ namespace CompanySample.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
-                    ProductTypeName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    TerminalNumber = table.Column<int>(type: "INTEGER", nullable: false),
-                    SoldAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    ProductTypeName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,7 +45,9 @@ namespace CompanySample.Migrations
                 columns: table => new
                 {
                     CustomerProductsId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProductCustomersId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ProductCustomersId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SoldAt = table.Column<DateTime>(type: "DATE", nullable: true),
+                    TerminalNumber = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
