@@ -15,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICustomerService, CustomerService>();
 builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IValidationService, ValidationService>();
 
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
